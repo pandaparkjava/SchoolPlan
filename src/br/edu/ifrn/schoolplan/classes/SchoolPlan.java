@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class SchoolPlan {
     
-    private List<Disciplina> disciplinas;
+    private ArrayList<Disciplina> disciplinas;
     
     public SchoolPlan(){
         disciplinas = new ArrayList<>();
