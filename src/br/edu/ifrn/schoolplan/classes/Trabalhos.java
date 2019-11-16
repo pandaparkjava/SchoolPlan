@@ -15,7 +15,7 @@ import java.time.Period;
  */
 public class Trabalhos { 
     
-    private ColorChooser nivelImportancia;
+    private MyColorChooser nivelImportancia;
     private int diasRestantes;
     private Calendar diaEntrega;
     private String nomeTrabalho;
@@ -23,7 +23,7 @@ public class Trabalhos {
     private int day, month, year;
    
     
-    public Trabalhos(ColorChooser nivelImportancia, Calendar diaEntrega, String nomeTrabalho, int dificuldade) {
+    public Trabalhos(MyColorChooser nivelImportancia, Calendar diaEntrega, String nomeTrabalho, int dificuldade) {
         this.nivelImportancia = nivelImportancia;
         this.diaEntrega= diaEntrega;
         this.nomeTrabalho = nomeTrabalho;
@@ -39,7 +39,7 @@ public class Trabalhos {
     }
    
    
-    public ColorChooser getNivelImportancia() {
+    public MyColorChooser getNivelImportancia() {
         return nivelImportancia;
     }
 
@@ -66,7 +66,7 @@ public class Trabalhos {
         }
     }
 
-    public void setNivelImportancia(ColorChooser nivelImportancia) {
+    public void setNivelImportancia(MyColorChooser nivelImportancia) {
         this.nivelImportancia = nivelImportancia;
         if(diasRestantes>10){
            nivelImportancia.setBackground(Color.GREEN);        

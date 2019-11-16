@@ -8,10 +8,10 @@ public class Disciplina {
     private String professor;
     
     
-    public Disciplina(String nome, Color cor, String professor) {
+    public Disciplina(String nome, String professor, Color cor) {
         this.nome = nome;
+        this.professor = professor;        
         this.cor = cor;
-        this.professor = professor;
     }
     
     
