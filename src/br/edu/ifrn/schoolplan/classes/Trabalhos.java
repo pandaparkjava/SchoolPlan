@@ -5,6 +5,9 @@
  */
 package br.edu.ifrn.schoolplan.classes;
 import java.awt.Color;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
  import java.util.Calendar;
 /**
  *
@@ -14,13 +17,15 @@ public class Trabalhos {
     
     private ColorChooser nivelImportancia;
     private int diasRestantes;
+    private Calendar diaEntrega;
     private String nomeTrabalho;
     private int dificuldade;
-    private Calendar cal;
+    private int day, month, year;
+   
     
-    public Trabalhos(ColorChooser nivelImportancia, int diasRestantes, String nomeTrabalho, int dificuldade) {
+    public Trabalhos(ColorChooser nivelImportancia, Calendar diaEntrega, String nomeTrabalho, int dificuldade) {
         this.nivelImportancia = nivelImportancia;
-        this.diasRestantes = diasRestantes;
+        this.diaEntrega= diaEntrega;
         this.nomeTrabalho = nomeTrabalho;
         this.dificuldade= dificuldade;
     }
@@ -38,18 +43,26 @@ public class Trabalhos {
         return nivelImportancia;
     }
 
-    public int getDiasRestantes() {
-        return diasRestantes;
+    public Calendar getDiaEntrega() {
+        return diaEntrega;
     }
 
     public String getNomeTrabalho() {
         return nomeTrabalho;
     }
 
-    public void setDiasRestantes(int diasRestantes) {
-        this.diasRestantes = diasRestantes;
+    public void setDiasRestantes(Calendar diaEntrega) {
+        this.diaEntrega = diaEntrega;
+        day= diaEntrega.get(Calendar.DAY_OF_MONTH);
+        month= diaEntrega.get(Calendar.MONTH);
+        year= diaEntrega.get(Calendar.YEAR);
+       
+        Calendar entrega = Calendar.getInstance();
+        entrega.set(Calendar.DAY_OF_MONTH,day);
+        entrega.set(Calendar.MONTH,month);
+        entrega.set(Calendar.YEAR,year);
         for(int i=0; i<=diasRestantes;i++){
-            
+         diasRestantes= Period.between(LocalDate.of(day,month,year), LocalDate.now()).getDays();
         }
     }
 
