@@ -5,6 +5,10 @@
  */
 package br.edu.ifrn.schoolplan.janelas;
 
+import br.edu.ifrn.schoolplan.classes.ColorChooser;
+import br.edu.ifrn.schoolplan.classes.Disciplina;
+import java.awt.Window;
+import java.awt.event.WindowAdapter;
 /**
  *
  * @author ferna
@@ -68,8 +72,18 @@ public class NovaDisciplina extends javax.swing.JFrame {
         );
 
         alterarCor.setText("Alterar cor...");
+        alterarCor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarCorActionPerformed(evt);
+            }
+        });
 
         Salvar.setText("Salvar");
+        Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -139,7 +153,47 @@ public class NovaDisciplina extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
+        Disciplina d = new Disciplina(nomeDisciplinatxt.getText(), nomeDocente.getText(), corSelec.getBackground());
+    }//GEN-LAST:event_SalvarActionPerformed
 
+    private void alterarCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarCorActionPerformed
+        
+        
+        corSelec.setBackground(c1.getCor());
+    }//GEN-LAST:event_alterarCorActionPerformed
+
+public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(NovoTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NovoTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NovoTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NovoTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new NovaDisciplina().setVisible(true);
+            }
+        });
+    }
 
 
 
