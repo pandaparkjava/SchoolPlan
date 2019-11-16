@@ -21,13 +21,9 @@ public class ColorChooser extends javax.swing.JFrame {
     }
     
     public void alterarCor(){
-        texto1.setText(green.getValue().toString(););
+        
     }
     
-    @Override
-    public String toString(){
-        return getValue();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,9 +83,15 @@ public class ColorChooser extends javax.swing.JFrame {
 
         salvar.setText("Salvar");
 
+        texto1.setEditable(false);
+
+        texto2.setEditable(false);
+
         blue.setMaximum(255);
         blue.setPaintLabels(true);
         blue.setPaintTicks(true);
+
+        texto3.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
