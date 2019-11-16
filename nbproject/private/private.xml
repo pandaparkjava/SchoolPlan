@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/janelas/Anotacoes.java</file>
+            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/classes/Nota.java</file>
+            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/classes/SchoolPlan.java</file>
+            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/janelas/TelaTrabalhos.java</file>
             <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/janelas/TelaInicial.java</file>
-            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/janelas/NovaDisciplina.java</file>
-            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/janelas/TelaDisciplinas.java</file>
+            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/classes/ColorChooser.java</file>
+            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/classes/Calendario.java</file>
+            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/classes/Disciplina.java</file>
+            <file>file:/C:/Users/ferna/Documents/NetBeansProjects/SchoolPlan/src/br/edu/ifrn/schoolplan/janelas/NovoTrabalho.java</file>
         </group>
     </open-files>
 </project-private>
