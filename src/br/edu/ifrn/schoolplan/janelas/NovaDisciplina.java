@@ -5,8 +5,10 @@
  */
 package br.edu.ifrn.schoolplan.janelas;
 
-import br.edu.ifrn.schoolplan.classes.ColorChooser;
+import br.edu.ifrn.schoolplan.classes.MyColorChooser;
 import br.edu.ifrn.schoolplan.classes.Disciplina;
+import br.edu.ifrn.schoolplan.classes.SchoolPlan;
+import java.awt.Color;
 import java.awt.Window;
 import java.awt.event.WindowAdapter;
 /**
@@ -15,11 +17,11 @@ import java.awt.event.WindowAdapter;
  */
 public class NovaDisciplina extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NovaDisciplina
-     */
-    public NovaDisciplina() {
+    private SchoolPlan plan;
+    
+    public NovaDisciplina(SchoolPlan plan) {
         initComponents();
+        this.plan = plan;
     }
 
     /**
@@ -39,12 +41,17 @@ public class NovaDisciplina extends javax.swing.JFrame {
         docenteRotulo = new javax.swing.JLabel();
         nomeDocente = new javax.swing.JTextField();
         selecionarCorRotulo = new javax.swing.JLabel();
-        corSelec = new javax.swing.JPanel();
-        alterarCor = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         Salvar = new javax.swing.JButton();
+        redRotulo = new javax.swing.JLabel();
+        red = new javax.swing.JSlider();
+        green = new javax.swing.JSlider();
+        greenRotulo = new javax.swing.JLabel();
+        blueRotulo = new javax.swing.JLabel();
+        blue = new javax.swing.JSlider();
+        painelCor = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         novaDiscip.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         novaDiscip.setText("Nova Disciplina");
@@ -58,26 +65,6 @@ public class NovaDisciplina extends javax.swing.JFrame {
         selecionarCorRotulo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         selecionarCorRotulo.setText("Selecione uma cor");
 
-        corSelec.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout corSelecLayout = new javax.swing.GroupLayout(corSelec);
-        corSelec.setLayout(corSelecLayout);
-        corSelecLayout.setHorizontalGroup(
-            corSelecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 45, Short.MAX_VALUE)
-        );
-        corSelecLayout.setVerticalGroup(
-            corSelecLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 44, Short.MAX_VALUE)
-        );
-
-        alterarCor.setText("Alterar cor...");
-        alterarCor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alterarCorActionPerformed(evt);
-            }
-        });
-
         Salvar.setText("Salvar");
         Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,28 +72,91 @@ public class NovaDisciplina extends javax.swing.JFrame {
             }
         });
 
+        redRotulo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        redRotulo.setText("RED");
+
+        red.setMaximum(255);
+        red.setPaintLabels(true);
+        red.setPaintTicks(true);
+        red.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                alterarCor(evt);
+            }
+        });
+
+        green.setMaximum(255);
+        green.setPaintLabels(true);
+        green.setPaintTicks(true);
+        green.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                alterarCor(evt);
+            }
+        });
+
+        greenRotulo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        greenRotulo.setText("GREEN");
+
+        blueRotulo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        blueRotulo.setText("BLUE");
+
+        blue.setMaximum(255);
+        blue.setPaintLabels(true);
+        blue.setPaintTicks(true);
+        blue.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                alterarCor(evt);
+            }
+        });
+
+        painelCor.setBackground(new java.awt.Color(255, 255, 255));
+        painelCor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout painelCorLayout = new javax.swing.GroupLayout(painelCor);
+        painelCor.setLayout(painelCorLayout);
+        painelCorLayout.setHorizontalGroup(
+            painelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        painelCorLayout.setVerticalGroup(
+            painelCorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Salvar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(novaDiscip)
-                        .addComponent(nomeRotulo)
-                        .addComponent(nomeDisciplinatxt, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(docenteRotulo)
-                        .addComponent(nomeDocente, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                        .addComponent(selecionarCorRotulo)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(alterarCor)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(corSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator2)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(greenRotulo)
+                            .addComponent(blueRotulo)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(red, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(green, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addGap(6, 6, 6))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(painelCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Salvar)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(novaDiscip)
+                                    .addComponent(nomeRotulo)
+                                    .addComponent(nomeDisciplinatxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(docenteRotulo)
+                                    .addComponent(nomeDocente, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                                    .addComponent(selecionarCorRotulo)))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(redRotulo)
+                            .addComponent(blue, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,18 +175,28 @@ public class NovaDisciplina extends javax.swing.JFrame {
                 .addComponent(nomeDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(selecionarCorRotulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(redRotulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(red, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(greenRotulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(corSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(alterarCor)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(green, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(painelCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)))
+                .addComponent(blueRotulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(blue, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Salvar)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Salvar))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -151,57 +211,29 @@ public class NovaDisciplina extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
-        Disciplina d = new Disciplina(nomeDisciplinatxt.getText(), nomeDocente.getText(), corSelec.getBackground());
+        Disciplina d = new Disciplina(nomeDisciplinatxt.getText(), nomeDocente.getText(), painelCor.getBackground());
+        plan.adicionarDisciplina(d);
+        dispose();
     }//GEN-LAST:event_SalvarActionPerformed
 
-    private void alterarCorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarCorActionPerformed
-        
-        
-        corSelec.setBackground(c1.getCor());
-    }//GEN-LAST:event_alterarCorActionPerformed
+    private void alterarCor(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_alterarCor
+        painelCor.setBackground(new Color(red.getValue(), green.getValue(), blue.getValue()));
+    }//GEN-LAST:event_alterarCor
 
-public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NovoTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NovoTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NovoTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NovoTrabalho.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NovaDisciplina().setVisible(true);
-            }
-        });
-    }
-
-
-
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salvar;
-    private javax.swing.JButton alterarCor;
-    private javax.swing.JPanel corSelec;
+    private javax.swing.JSlider blue;
+    private javax.swing.JLabel blueRotulo;
     private javax.swing.JLabel docenteRotulo;
+    private javax.swing.JSlider green;
+    private javax.swing.JLabel greenRotulo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -209,6 +241,12 @@ public static void main(String args[]) {
     private javax.swing.JTextField nomeDocente;
     private javax.swing.JLabel nomeRotulo;
     private javax.swing.JLabel novaDiscip;
+    private javax.swing.JPanel painel;
+    private javax.swing.JPanel painel1;
+    private javax.swing.JPanel painel2;
+    private javax.swing.JPanel painelCor;
+    private javax.swing.JSlider red;
+    private javax.swing.JLabel redRotulo;
     private javax.swing.JLabel selecionarCorRotulo;
     // End of variables declaration//GEN-END:variables
 }

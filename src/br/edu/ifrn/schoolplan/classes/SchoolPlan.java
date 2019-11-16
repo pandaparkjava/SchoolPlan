@@ -22,4 +22,10 @@ public class SchoolPlan {
             disciplinas.remove(d);
         }
     }
+
+    public ArrayList<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+    
+    
 }
