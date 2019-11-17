@@ -6,9 +6,8 @@
 package br.edu.ifrn.schoolplan.classes;
 import java.awt.Color;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.Period;
- import java.util.Calendar;
+import java.util.Calendar;
 /**
  *
  * @author viviane
@@ -23,8 +22,8 @@ public class Trabalhos {
     private int day, month, year;
    
     
-    public Trabalhos(MyColorChooser nivelImportancia, Calendar diaEntrega, String nomeTrabalho, int dificuldade) {
-        this.nivelImportancia = nivelImportancia;
+    public Trabalhos(Calendar diaEntrega, String nomeTrabalho, int dificuldade) {
+      
         this.diaEntrega= diaEntrega;
         this.nomeTrabalho = nomeTrabalho;
         this.dificuldade= dificuldade;
