@@ -7,6 +7,7 @@ package br.edu.ifrn.schoolplan.janelas;
 
 import br.edu.ifrn.schoolplan.classes.Disciplina;
 import br.edu.ifrn.schoolplan.classes.SchoolPlan;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,7 +26,7 @@ public class GereNotas extends javax.swing.JFrame {
         initComponents();
         td = new TelaDisciplinas();
         plan = new SchoolPlan();
-        listaDisciplinas.setModel(model);
+        caixaDiscip.setModel((ComboBoxModel<String>) model);
     }
 
     /**
@@ -204,7 +205,7 @@ public class GereNotas extends javax.swing.JFrame {
 
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         
-        plan.getDisciplinas().get(listaDisciplinas.getSelectedIndex());
+        
         
         
     }//GEN-LAST:event_salvarActionPerformed
@@ -212,7 +213,8 @@ public class GereNotas extends javax.swing.JFrame {
     private void caixaDiscipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaDiscipActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_caixaDiscipActionPerformed
-
+    
+    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
