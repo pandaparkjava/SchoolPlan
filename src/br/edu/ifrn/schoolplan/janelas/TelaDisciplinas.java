@@ -116,6 +116,11 @@ public class TelaDisciplinas extends javax.swing.JFrame {
         );
 
         gerNotas.setText("Gerenciar notas");
+        gerNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerNotasActionPerformed(evt);
+            }
+        });
 
         removeDisciplina.setText("Remover disciplina");
         removeDisciplina.addActionListener(new java.awt.event.ActionListener() {
@@ -237,6 +242,11 @@ public class TelaDisciplinas extends javax.swing.JFrame {
        nomeProfessor.setText(plan.getDisciplinas().get(listaDisciplinas.getSelectedIndex()).getProfessor());
        cor.setBackground(plan.getDisciplinas().get(listaDisciplinas.getSelectedIndex()).getCor());
     }//GEN-LAST:event_detalhar
+
+    private void gerNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerNotasActionPerformed
+        GereNotas gn = new GereNotas();
+        gn.setVisible(true);
+    }//GEN-LAST:event_gerNotasActionPerformed
 
     
     public void carregarLista(){
