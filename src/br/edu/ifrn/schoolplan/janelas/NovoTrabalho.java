@@ -5,17 +5,20 @@
  */
 package br.edu.ifrn.schoolplan.janelas;
 
+import br.edu.ifrn.schoolplan.classes.SchoolPlan;
+
 /**
  *
  * @author ferna
  */
 public class NovoTrabalho extends javax.swing.JFrame {
-
+    private SchoolPlan plan;
     /**
      * Creates new form NovoTrabalho
      */
-    public NovoTrabalho() {
+    public NovoTrabalho(SchoolPlan plan) {
         initComponents();
+        this.plan= plan;
     }
 
     /**

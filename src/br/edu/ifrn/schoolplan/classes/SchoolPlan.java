@@ -6,9 +6,10 @@ import java.util.ArrayList;
 public class SchoolPlan {
     
     private ArrayList<Disciplina> disciplinas;
-    
+    private ArrayList< Trabalhos> trabalhos;
     public SchoolPlan(){
         disciplinas = new ArrayList<>();
+        trabalhos= new ArrayList<>();
     }
     
     public void adicionarDisciplina(Disciplina d){
@@ -27,5 +28,19 @@ public class SchoolPlan {
         return disciplinas;
     }
     
+     public void adicionarTrabalho(Trabalhos t){
+        if(!trabalhos.contains(t)){
+            trabalhos.add(t);
+        }
+    }
     
+    public void removerTrabalho(Trabalhos t){
+        if(trabalhos.contains(t)){
+            trabalhos.remove(t);
+        }
+    }
+
+    public ArrayList<Trabalhos> getTrabalhos() {
+        return trabalhos;
+    }
 }

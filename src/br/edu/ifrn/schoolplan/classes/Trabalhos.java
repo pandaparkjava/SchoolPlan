@@ -6,9 +6,8 @@
 package br.edu.ifrn.schoolplan.classes;
 import java.awt.Color;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.Period;
- import java.util.Calendar;
+import java.util.Calendar;
 /**
  *
  * @author viviane
