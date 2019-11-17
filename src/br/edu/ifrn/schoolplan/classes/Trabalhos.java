@@ -22,8 +22,8 @@ public class Trabalhos {
     private int day, month, year;
    
     
-    public Trabalhos(MyColorChooser nivelImportancia, Calendar diaEntrega, String nomeTrabalho, int dificuldade) {
-        this.nivelImportancia = nivelImportancia;
+    public Trabalhos(Calendar diaEntrega, String nomeTrabalho, int dificuldade) {
+      
         this.diaEntrega= diaEntrega;
         this.nomeTrabalho = nomeTrabalho;
         this.dificuldade= dificuldade;

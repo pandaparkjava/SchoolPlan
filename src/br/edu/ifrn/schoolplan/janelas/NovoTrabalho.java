@@ -6,19 +6,23 @@
 package br.edu.ifrn.schoolplan.janelas;
 
 import br.edu.ifrn.schoolplan.classes.SchoolPlan;
+import br.edu.ifrn.schoolplan.classes.Trabalhos;
+import java.util.Calendar;
 
 /**
  *
  * @author ferna
  */
 public class NovoTrabalho extends javax.swing.JFrame {
+
     private SchoolPlan plan;
+
     /**
      * Creates new form NovoTrabalho
      */
     public NovoTrabalho(SchoolPlan plan) {
         initComponents();
-        this.plan= plan;
+        this.plan = plan;
     }
 
     /**
@@ -69,6 +73,11 @@ public class NovoTrabalho extends javax.swing.JFrame {
         }
         jFormattedTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jFormattedTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Descrição");
@@ -91,11 +100,21 @@ public class NovoTrabalho extends javax.swing.JFrame {
 
         jSlider1.setMaximum(10);
         jSlider1.setMinimum(1);
+        jSlider1.setMajorTickSpacing(1);
+
+        jSlider1.setPaintTicks(true);
+
+        jSlider1.setSnapToTicks(true);
         jSlider1.setPaintLabels(true);
         jSlider1.setPaintTicks(true);
         jSlider1.setSnapToTicks(true);
 
         jButton1.setText("Adicionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,6 +123,9 @@ public class NovoTrabalho extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator2)
                     .addComponent(jSeparator1)
@@ -127,7 +149,6 @@ public class NovoTrabalho extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(provaJBT)))
                         .addGap(0, 113, Short.MAX_VALUE))
-                    .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)))
@@ -163,7 +184,7 @@ public class NovoTrabalho extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -184,7 +205,27 @@ public class NovoTrabalho extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+      
+        String data = jFormattedTextField1.getText();
+        String[] textoSeparado = data.split("\\s");
+        int day = Integer.parseInt(textoSeparado[0]);
+        int month = Integer.parseInt(textoSeparado[1]);
+        int year = Integer.parseInt(textoSeparado[2]);
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.DAY_OF_MONTH, day);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.YEAR, year);
+        Trabalhos tb = new Trabalhos(c, jTextField1.getText(), jSlider1.getValue());
+        plan.adicionarTrabalho(tb);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;

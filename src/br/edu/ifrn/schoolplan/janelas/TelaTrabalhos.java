@@ -157,7 +157,7 @@ public class TelaTrabalhos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarActionPerformed
-
+            
        NovoTrabalho nt= new NovoTrabalho(plan);
        nt.setVisible(true);
         
