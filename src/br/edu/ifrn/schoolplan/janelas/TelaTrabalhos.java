@@ -48,8 +48,8 @@ public class TelaTrabalhos extends javax.swing.JFrame {
         listaProvas = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         trabalho = new javax.swing.JMenu();
-        adicionar = new javax.swing.JMenu();
-        remover = new javax.swing.JMenu();
+        adicionar = new javax.swing.JMenuItem();
+        remover = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +126,11 @@ public class TelaTrabalhos extends javax.swing.JFrame {
         );
 
         trabalho.setText("Trabalho");
+        trabalho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trabalhoActionPerformed(evt);
+            }
+        });
 
         adicionar.setText("Adicionar");
         adicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,11 +161,13 @@ public class TelaTrabalhos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarActionPerformed
-            
-       NovoTrabalho nt= new NovoTrabalho(plan);
-       nt.setVisible(true);
+    private void trabalhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabalhoActionPerformed
         
+    }//GEN-LAST:event_trabalhoActionPerformed
+
+    private void adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarActionPerformed
+        NovoTrabalho nt = new NovoTrabalho(plan);
+        nt.setVisible(true);
     }//GEN-LAST:event_adicionarActionPerformed
 
         public void carregarLista(){
@@ -173,7 +180,7 @@ public class TelaTrabalhos extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu adicionar;
+    private javax.swing.JMenuItem adicionar;
     private javax.swing.JButton detalhar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -186,7 +193,7 @@ public class TelaTrabalhos extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JList<String> listaProvas;
     private javax.swing.JList<String> listaTrab;
-    private javax.swing.JMenu remover;
+    private javax.swing.JMenuItem remover;
     private javax.swing.JMenu trabalho;
     // End of variables declaration//GEN-END:variables
 }

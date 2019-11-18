@@ -8,20 +8,23 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Trabalho"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="trabalhoActionPerformed"/>
+          </Events>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="adicionar">
+            <MenuItem class="javax.swing.JMenuItem" name="adicionar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Adicionar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adicionarActionPerformed"/>
               </Events>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="remover">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="remover">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Remover"/>
               </Properties>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
