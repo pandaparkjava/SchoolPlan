@@ -7,6 +7,7 @@ package br.edu.ifrn.schoolplan.janelas;
 
 import br.edu.ifrn.schoolplan.classes.Disciplina;
 import br.edu.ifrn.schoolplan.classes.SchoolPlan;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -254,6 +255,7 @@ public class TelaDisciplinas extends javax.swing.JFrame {
         for(Disciplina d : plan.getDisciplinas()){
             model.addElement(d.toString());
         }
+        
     }
 
     
