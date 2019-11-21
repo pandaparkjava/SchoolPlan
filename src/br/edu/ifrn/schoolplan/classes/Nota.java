@@ -18,11 +18,11 @@ public class Nota {
         this.p4 = p4;
     }
 
-    public double calcularAritmetica(int n1, int n2, int n3, int n4){
+    public double calcularAritmetica(double n1, double n2, double n3, double n4){
         notaFinal= (n1 +n2 +n3+ n4)/4;
         return notaFinal;
     }
-    public void calcularPonderada(int n1, int n2, int n3, int n4){
+    public void calcularPonderada(double n1, double n2, double n3, double n4){
         notaFinal=(n1*p1 +n2*p2 +n3*p3+ n4*p4)/p1+p2+p3+p4;
     }
 

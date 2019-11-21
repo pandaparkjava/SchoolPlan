@@ -26,6 +26,7 @@ public class TelaDisciplinas extends javax.swing.JFrame {
         plan = new SchoolPlan();
         model = new DefaultListModel<>();
         listaDisciplinas.setModel(model);
+        
     }
 
     /**
@@ -245,8 +246,9 @@ public class TelaDisciplinas extends javax.swing.JFrame {
     }//GEN-LAST:event_detalhar
 
     private void gerNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerNotasActionPerformed
-        GereNotas gn = new GereNotas();
+        GereNotas gn = new GereNotas(plan.getDisciplinas().get(listaDisciplinas.getSelectedIndex()));
         gn.setVisible(true);
+        dispose();
     }//GEN-LAST:event_gerNotasActionPerformed
 
     
