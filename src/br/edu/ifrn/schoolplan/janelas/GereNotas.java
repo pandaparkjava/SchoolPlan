@@ -21,18 +21,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GereNotas extends javax.swing.JFrame {
     
-    TelaDisciplinas td;
-    Disciplina d;
+    Disciplina dBase;
     SchoolPlan plan;
-    private DefaultListModel<String> model;
-    //DefaultComboBoxModel model1 = new DefaultComboBoxModel(model);
+    TelaDisciplinas td;
     
-    public GereNotas() {
+    private DefaultListModel<String> model1;
+    
+    
+    
+    public GereNotas(Disciplina d) {
         initComponents();
         td = new TelaDisciplinas();
-        plan = new SchoolPlan();
-        model = new DefaultListModel<>();
+        disciplina.setText(d.toString());
         
+        dBase = d;
     }
 
     /**
@@ -61,7 +63,7 @@ public class GereNotas extends javax.swing.JFrame {
         opcao = new javax.swing.JComboBox<>();
         n3 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         disciplina.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         disciplina.setText("Disciplina");
@@ -119,7 +121,7 @@ public class GereNotas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(opcao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(opcao, 0, 221, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jSeparator1)
@@ -186,7 +188,7 @@ public class GereNotas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mediaRotulo)
                     .addComponent(media))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salvar)
                     .addComponent(calcular))
@@ -197,16 +199,11 @@ public class GereNotas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -218,10 +215,13 @@ public class GereNotas extends javax.swing.JFrame {
     }//GEN-LAST:event_n1ActionPerformed
 
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
-        
-        
-        
-        
+        dBase.setN1(Double.parseDouble(n1.getText()));
+        dBase.setN2(Double.parseDouble(n2.getText()));
+        dBase.setN3(Double.parseDouble(n3.getText()));
+        dBase.setN4(Double.parseDouble(n4.getText()));
+        dispose();
+        //td.setVisible(true);
+        //td.carregarLista();
     }//GEN-LAST:event_salvarActionPerformed
 
     private void opcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcaoActionPerformed
@@ -232,21 +232,15 @@ public class GereNotas extends javax.swing.JFrame {
     private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
        if(opcao.getSelectedIndex()==1){
          Nota ari = new Nota();
-         media.setText(ari.calcularAritmetica(Integer.parseInt(n1.getText()),
-                 Integer.parseInt(n2.getText()),
-                 Integer.parseInt(n3.getText()),
-                 Integer.parseInt(n4.getText())));
+         media.setText(ari.calcularAritmetica(Double.parseDouble(n1.getText()),
+                 Double.parseDouble(n2.getText()),
+                 Double.parseDouble(n3.getText()),
+                 Double.parseDouble(n4.getText()))+ "");
         }if(opcao.getSelectedIndex()==2){
             
         }
     }//GEN-LAST:event_calcularActionPerformed
-    
-    public void CarregarCaixa(){
-        model.clear();
-        for(Disciplina d : plan.getDisciplinas()){
-            model.addElement(d.toString());
-        }
-    }
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
