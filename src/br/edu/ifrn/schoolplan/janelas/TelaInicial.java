@@ -78,6 +78,11 @@ public class TelaInicial extends javax.swing.JFrame {
         horariosRotulo.setText("Horários");
 
         calendario.setText("Calendário");
+        calendario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calendarioActionPerformed(evt);
+            }
+        });
 
         calendarioRotulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         calendarioRotulo.setText("Calendário");
@@ -202,6 +207,11 @@ public class TelaInicial extends javax.swing.JFrame {
         TelaTrabalhos tt= new TelaTrabalhos();
         tt.setVisible(true);
     }//GEN-LAST:event_trabalhosActionPerformed
+
+    private void calendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarioActionPerformed
+        Calendar c= new Calendar();
+        c.setVisible(true);
+    }//GEN-LAST:event_calendarioActionPerformed
 
     
     public static void main(String args[]) {
