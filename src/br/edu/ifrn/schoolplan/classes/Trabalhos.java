@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.edu.ifrn.schoolplan.classes;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
@@ -16,13 +17,13 @@ public class Trabalhos {
     
     private MyColorChooser nivelImportancia;
     private int diasRestantes;
-    private Calendar diaEntrega;
+    private JDateChooser diaEntrega;
     private String nomeTrabalho;
     private int dificuldade;
     private int day, month, year;
    
     
-    public Trabalhos(Calendar diaEntrega, String nomeTrabalho, int dificuldade) {
+    public Trabalhos(JDateChooser diaEntrega, String nomeTrabalho, int dificuldade) {
       
         this.diaEntrega= diaEntrega;
         this.nomeTrabalho = nomeTrabalho;
@@ -42,7 +43,7 @@ public class Trabalhos {
         return nivelImportancia;
     }
 
-    public Calendar getDiaEntrega() {
+    public JDateChooser getDiaEntrega() {
         return diaEntrega;
     }
 
@@ -50,18 +51,10 @@ public class Trabalhos {
         return nomeTrabalho;
     }
 
-    public void setDiasRestantes(Calendar diaEntrega) {
-        this.diaEntrega = diaEntrega;
-        day= diaEntrega.get(Calendar.DAY_OF_MONTH);
-        month= diaEntrega.get(Calendar.MONTH);
-        year= diaEntrega.get(Calendar.YEAR);
-       
-        Calendar entrega = Calendar.getInstance();
-        entrega.set(Calendar.DAY_OF_MONTH,day);
-        entrega.set(Calendar.MONTH,month);
-        entrega.set(Calendar.YEAR,year);
+    public void setDiasRestantes(JDateChooser diaEntrega) {
+    
         for(int i=0; i<=diasRestantes;i++){
-         diasRestantes= Period.between(LocalDate.of(day,month,year), LocalDate.now()).getDays();
+         diasRestantes= Period.between(LocalDate.of(JDateChooser), LocalDate.now()).getDays();
         }
     }
 

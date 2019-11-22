@@ -41,7 +41,6 @@ public class NovoTrabalho extends javax.swing.JFrame {
         tituloRotulo = new javax.swing.JLabel();
         dataRotulo = new javax.swing.JLabel();
         titulo = new javax.swing.JTextField();
-        data = new javax.swing.JFormattedTextField();
         descricao = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,6 +51,7 @@ public class NovoTrabalho extends javax.swing.JFrame {
         provaJBT = new javax.swing.JRadioButton();
         dificuldade = new javax.swing.JSlider();
         adicionar = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,19 +65,6 @@ public class NovoTrabalho extends javax.swing.JFrame {
         dataRotulo.setText("Data de entrega");
 
         titulo.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        try {
-            data.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        data.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        data.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        data.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataActionPerformed(evt);
-            }
-        });
 
         descricao.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         descricao.setText("Descrição");
@@ -133,25 +120,25 @@ public class NovoTrabalho extends javax.swing.JFrame {
                         .addComponent(tituloRotulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(titulo))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(dataRotulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(data))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(descricao)
-                            .addComponent(dificuldadeRotulo)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(tipoRotulo)
-                                .addGap(59, 59, 59)
-                                .addComponent(trabalhoJBT)
-                                .addGap(18, 18, 18)
-                                .addComponent(provaJBT)))
-                        .addGap(0, 113, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(adicionar)))
+                        .addComponent(adicionar))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(dataRotulo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(descricao)
+                        .addComponent(dificuldadeRotulo)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(tipoRotulo)
+                                    .addGap(59, 59, 59)
+                                    .addComponent(trabalhoJBT)))
+                            .addGap(195, 195, 195)
+                            .addComponent(provaJBT))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -160,15 +147,16 @@ public class NovoTrabalho extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloRotulo)
-                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dataRotulo)
-                    .addComponent(data, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tituloRotulo)
+                            .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dataRotulo))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipoRotulo)
@@ -208,34 +196,23 @@ public class NovoTrabalho extends javax.swing.JFrame {
     private void adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarActionPerformed
 
       
-        String data = data.getText();
-        String[] textoSeparado = data.split("\\s");
-        int day = Integer.parseInt(textoSeparado[0]);
-        int month = Integer.parseInt(textoSeparado[1]);
-        int year = Integer.parseInt(textoSeparado[2]);
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.DAY_OF_MONTH, day);
-        c.set(Calendar.MONTH, month);
-        c.set(Calendar.YEAR, year);
-        Trabalhos tb = new Trabalhos(c, titulo.getText(), dificuldade.getValue());
+      
+       
+        Trabalhos tb = new Trabalhos(jDateChooser1, titulo.getText(), dificuldade.getValue());
         plan.adicionarTrabalho(tb);
         dispose();
     }//GEN-LAST:event_adicionarActionPerformed
-
-    private void dataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dataActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JFormattedTextField data;
     private javax.swing.JLabel dataRotulo;
     private javax.swing.JLabel descricao;
     private javax.swing.JEditorPane descricaoEditor;
     private javax.swing.JSlider dificuldade;
     private javax.swing.JLabel dificuldadeRotulo;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
