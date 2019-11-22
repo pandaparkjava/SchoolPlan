@@ -22,8 +22,9 @@ public class Nota {
         notaFinal= (n1 +n2 +n3+ n4)/4;
         return notaFinal;
     }
-    public void calcularPonderada(double n1, double n2, double n3, double n4){
+    public double calcularPonderada(double n1, double n2, double n3, double n4, int p1, int p2, int p3, int p4){
         notaFinal=(n1*p1 +n2*p2 +n3*p3+ n4*p4)/p1+p2+p3+p4;
+        return notaFinal;
     }
 
     public void setNotaFinal(double notaFinal) {
