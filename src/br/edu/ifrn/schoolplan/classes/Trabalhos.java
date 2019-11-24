@@ -4,30 +4,29 @@
  * and open the template in the editor.
  */
 package br.edu.ifrn.schoolplan.classes;
+
 import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author viviane
  */
-public class Trabalhos { 
-    
+public class Trabalhos {
+
     private MyColorChooser nivelImportancia;
     private int diasRestantes;
     private JDateChooser diaEntrega;
     private String nomeTrabalho;
     private int dificuldade;
-    private int day, month, year;
-   
-    
+    private JDateChooser today;
+
     public Trabalhos(JDateChooser diaEntrega, String nomeTrabalho, int dificuldade) {
-      
-        this.diaEntrega= diaEntrega;
+
+        this.diaEntrega = diaEntrega;
         this.nomeTrabalho = nomeTrabalho;
-        this.dificuldade= dificuldade;
+        this.dificuldade = dificuldade;
     }
 
     public int getDificuldade() {
@@ -37,8 +36,7 @@ public class Trabalhos {
     public void setNomeTrabalho(String nomeTrabalho) {
         this.nomeTrabalho = nomeTrabalho;
     }
-   
-   
+
     public MyColorChooser getNivelImportancia() {
         return nivelImportancia;
     }
@@ -51,31 +49,31 @@ public class Trabalhos {
         return nomeTrabalho;
     }
 
-    public void setDiasRestantes(JDateChooser diaEntrega) {
-    
-        for(int i=0; i<=diasRestantes;i++){
-         diasRestantes= Period.between(LocalDate.of(JDateChooser), LocalDate.now()).getDays();
-        }
+    public void setDiasRestantes(JDateChooser diaEntrega, JDateChooser today) {
+        this.diaEntrega = diaEntrega;
+        this.today = today;
+        Date startDate = today.getDate();
+        Date endDate = diaEntrega.getDate();
+
+        long difference = endDate.getTime() - startDate.getTime();
+
+        diasRestantes = (int) (difference / 1000 / 24);
+
     }
 
     public void setNivelImportancia(MyColorChooser nivelImportancia) {
         this.nivelImportancia = nivelImportancia;
-        if(diasRestantes>10){
-           nivelImportancia.setBackground(Color.GREEN);        
-        }else if(diasRestantes<10 && diasRestantes>6){
-            if(dificuldade>=5){
+        if (diasRestantes > 10) {
+            nivelImportancia.setBackground(Color.GREEN);
+        } else if (diasRestantes < 10 && diasRestantes > 6) {
+            if (dificuldade >= 5) {
                 nivelImportancia.setBackground(Color.YELLOW);
-            }else{
+            } else {
                 nivelImportancia.setBackground(Color.GREEN);
             }
-        }else if(diasRestantes <=2){
-                nivelImportancia.setBackground(Color.RED);
-                }
-            
+        } else if (diasRestantes <= 2) {
+            nivelImportancia.setBackground(Color.RED);
         }
-    }
-      
-   
-        
-    
 
+    }
+}

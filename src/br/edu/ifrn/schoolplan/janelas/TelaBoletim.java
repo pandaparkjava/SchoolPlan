@@ -38,6 +38,7 @@ public class TelaBoletim extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        tabBoletim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tabBoletim.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -112,6 +113,7 @@ public class TelaBoletim extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
    

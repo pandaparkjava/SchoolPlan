@@ -20,20 +20,20 @@ import javax.swing.table.DefaultTableModel;
  * @author ferna
  */
 public class GereNotas extends javax.swing.JFrame {
-    
+
     Disciplina dBase;
     SchoolPlan plan;
     TelaDisciplinas td;
-    
+    TelaPesos tp;
+
     private DefaultListModel<String> model1;
-    
-    
-    
+
     public GereNotas(Disciplina d) {
         initComponents();
         td = new TelaDisciplinas();
+        tp = new TelaPesos();
         disciplina.setText(d.toString());
-        
+
         dBase = d;
     }
 
@@ -62,6 +62,7 @@ public class GereNotas extends javax.swing.JFrame {
         media = new javax.swing.JLabel();
         opcao = new javax.swing.JComboBox<>();
         n3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -113,6 +114,9 @@ public class GereNotas extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Alterar Pesos");
+        jButton1.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,13 +154,15 @@ public class GereNotas extends javax.swing.JFrame {
                         .addGap(7, 7, 7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(calcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(mediaRotulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(media, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jButton1)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -171,9 +177,11 @@ public class GereNotas extends javax.swing.JFrame {
                     .addComponent(n1Rotulo)
                     .addComponent(n1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(n2Rotulo)
-                    .addComponent(n2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(n2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(n2Rotulo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(n3Rotulo)
@@ -182,17 +190,18 @@ public class GereNotas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(n4Rotulo)
                     .addComponent(n4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(opcao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mediaRotulo)
-                    .addComponent(media))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                    .addComponent(media)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salvar)
                     .addComponent(calcular))
-                .addGap(40, 40, 40))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,7 +212,9 @@ public class GereNotas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -211,7 +222,7 @@ public class GereNotas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void n1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n1ActionPerformed
-        
+
     }//GEN-LAST:event_n1ActionPerformed
 
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
@@ -224,28 +235,31 @@ public class GereNotas extends javax.swing.JFrame {
         //td.carregarLista();
     }//GEN-LAST:event_salvarActionPerformed
 
-    private void opcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcaoActionPerformed
-        
-        
-    }//GEN-LAST:event_opcaoActionPerformed
-
     private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
-       if(opcao.getSelectedIndex()==1){
-         Nota ari = new Nota();
-         media.setText(ari.calcularAritmetica(Double.parseDouble(n1.getText()),
-                 Double.parseDouble(n2.getText()),
-                 Double.parseDouble(n3.getText()),
-                 Double.parseDouble(n4.getText()))+ "");
-        }if(opcao.getSelectedIndex()==2){
-            
+        if (opcao.getSelectedIndex() == 1) {
+            Nota ari = new Nota();
+            media.setText(ari.calcularAritmetica(Double.parseDouble(n1.getText()),
+                    Double.parseDouble(n2.getText()),
+                    Double.parseDouble(n3.getText()),
+                    Double.parseDouble(n4.getText())) + "");
+        }
+        if (opcao.getSelectedIndex() == 2) {
+            jButton1.enable();
+            Nota pond = new Nota();
+            TelaPesos tp = new TelaPesos();
+            media.setText();
         }
     }//GEN-LAST:event_calcularActionPerformed
 
-   
+    private void opcaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcaoActionPerformed
+
+    }//GEN-LAST:event_opcaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calcular;
     private javax.swing.JLabel disciplina;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel media;
