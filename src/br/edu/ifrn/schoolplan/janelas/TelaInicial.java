@@ -5,17 +5,25 @@
  */
 package br.edu.ifrn.schoolplan.janelas;
 
+import br.edu.ifrn.schoolplan.classes.SchoolPlan;
+import br.edu.ifrn.schoolplan.classes.Trabalho;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ferna
  */
 public class TelaInicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaInicial
-     */
+    private SchoolPlan plan;
+    
     public TelaInicial() {
         initComponents();
+        
     }
 
     /**
@@ -204,12 +212,13 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_disciplinasActionPerformed
 
     private void trabalhosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabalhosActionPerformed
-        TelaTrabalhos tt= new TelaTrabalhos();
+        
+        TelaTrabalhos tt = new TelaTrabalhos();
         tt.setVisible(true);
     }//GEN-LAST:event_trabalhosActionPerformed
 
     private void calendarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarioActionPerformed
-        Calendar c= new Calendar();
+        Calendar c = new Calendar();
         c.setVisible(true);
     }//GEN-LAST:event_calendarioActionPerformed
 

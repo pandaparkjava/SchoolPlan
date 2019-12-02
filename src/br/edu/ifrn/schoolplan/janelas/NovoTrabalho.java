@@ -6,8 +6,15 @@
 package br.edu.ifrn.schoolplan.janelas;
 
 import br.edu.ifrn.schoolplan.classes.SchoolPlan;
-import br.edu.ifrn.schoolplan.classes.Trabalhos;
+import br.edu.ifrn.schoolplan.classes.Trabalho;
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JDayChooser;
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import javax.swing.ButtonModel;
 
 /**
  *
@@ -16,6 +23,7 @@ import java.util.Calendar;
 public class NovoTrabalho extends javax.swing.JFrame {
 
     private SchoolPlan plan;
+    private Trabalho tb;
 
     /**
      * Creates new form NovoTrabalho
@@ -23,6 +31,7 @@ public class NovoTrabalho extends javax.swing.JFrame {
     public NovoTrabalho(SchoolPlan plan) {
         initComponents();
         this.plan = plan;
+        
     }
 
     /**
@@ -51,9 +60,9 @@ public class NovoTrabalho extends javax.swing.JFrame {
         provaJBT = new javax.swing.JRadioButton();
         dificuldade = new javax.swing.JSlider();
         adicionar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        dataChooser = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Novo trabalho/prova");
@@ -80,10 +89,20 @@ public class NovoTrabalho extends javax.swing.JFrame {
         buttonGroup1.add(trabalhoJBT);
         trabalhoJBT.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         trabalhoJBT.setText("Trabalho");
+        trabalhoJBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trabalhoJBTActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(provaJBT);
         provaJBT.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         provaJBT.setText("Prova");
+        provaJBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                provaJBTActionPerformed(evt);
+            }
+        });
 
         dificuldade.setMaximum(10);
         dificuldade.setMinimum(1);
@@ -113,32 +132,36 @@ public class NovoTrabalho extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(dificuldade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator2)
                     .addComponent(jSeparator1)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(tituloRotulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(titulo))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(adicionar))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(dataRotulo)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(descricao)
-                        .addComponent(dificuldadeRotulo)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(tipoRotulo)
-                                    .addGap(59, 59, 59)
-                                    .addComponent(trabalhoJBT)))
-                            .addGap(195, 195, 195)
-                            .addComponent(provaJBT))))
+                                    .addComponent(tituloRotulo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(titulo))
+                                .addComponent(descricao)
+                                .addComponent(dificuldadeRotulo)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(dataRotulo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(dataChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(tipoRotulo)
+                                .addGap(59, 59, 59)
+                                .addComponent(trabalhoJBT)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(provaJBT)
+                        .addGap(26, 26, 26)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,7 +179,7 @@ public class NovoTrabalho extends javax.swing.JFrame {
                             .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(dataRotulo))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dataChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipoRotulo)
@@ -191,28 +214,58 @@ public class NovoTrabalho extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarActionPerformed
-
-      
-      
-       
-        Trabalhos tb = new Trabalhos(jDateChooser1, titulo.getText(), dificuldade.getValue());
+        boolean prova;
+        if(trabalhoJBT.isSelected()){
+            prova = false;
+        } else {
+            prova = true;
+        }
+        tb = new Trabalho(dataChooser.getDate(), titulo.getText(), dificuldade.getValue(), descricaoEditor.getText(), prova);
         plan.adicionarTrabalho(tb);
+        plan.serializar();
         dispose();
+        
     }//GEN-LAST:event_adicionarActionPerformed
 
+    private void trabalhoJBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabalhoJBTActionPerformed
+        //tb.setProva(false);
+    }//GEN-LAST:event_trabalhoJBTActionPerformed
+
+    private void provaJBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provaJBTActionPerformed
+        //tb.setProva(true);
+    }//GEN-LAST:event_provaJBTActionPerformed
+
+    public void subtrairDatas(){
+        /*Calendar a = Calendar.getInstance();
+        a.setTime(new Date());
+        
+        Calendar b = Calendar.getInstance();
+        b.set(dataChooser.getDate());
+        
+        
+        dataChooser.getDate();
+        
+        Date d = new Date();
+        String dStr = java.text.DateFormat.getDateInstance(DateFormat.MEDIUM).format(d);
+        
+        if(dataChooser, d) - ){
+            
+        }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private com.toedter.calendar.JDateChooser dataChooser;
     private javax.swing.JLabel dataRotulo;
     private javax.swing.JLabel descricao;
     private javax.swing.JEditorPane descricaoEditor;
     private javax.swing.JSlider dificuldade;
     private javax.swing.JLabel dificuldadeRotulo;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

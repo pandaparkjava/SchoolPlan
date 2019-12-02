@@ -1,6 +1,9 @@
 package br.edu.ifrn.schoolplan.classes;
 
 import java.awt.Color;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class Disciplina {
     private String nome;
@@ -79,4 +82,6 @@ public class Disciplina {
     public String toString(){
         return nome;
     }
+    
+    
 }

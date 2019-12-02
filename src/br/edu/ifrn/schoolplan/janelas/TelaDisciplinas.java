@@ -7,7 +7,13 @@ package br.edu.ifrn.schoolplan.janelas;
 
 import br.edu.ifrn.schoolplan.classes.Disciplina;
 import br.edu.ifrn.schoolplan.classes.SchoolPlan;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -19,7 +25,7 @@ public class TelaDisciplinas extends javax.swing.JFrame {
 
     SchoolPlan plan;
     private DefaultListModel<String> model;
-    
+    Disciplina disciplina;
     
     public TelaDisciplinas() {
         initComponents();
@@ -55,7 +61,7 @@ public class TelaDisciplinas extends javax.swing.JFrame {
         gerNotas = new javax.swing.JButton();
         removeDisciplina = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Disciplinas");
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -256,6 +262,26 @@ public class TelaDisciplinas extends javax.swing.JFrame {
         model.clear();
         for(Disciplina d : plan.getDisciplinas()){
             model.addElement(d.toString());
+        }
+        
+        try {
+            try (ObjectInputStream input = new ObjectInputStream(
+                    new FileInputStream("schoolplan.obj"))) {
+                plan = (SchoolPlan) input.readObject();
+                model.addElement(plan.getDisciplinas().get(listaDisciplinas.getSelectedIndex()).toString());
+            }
+        } catch (IOException ex) {
+            
+            
+            if(!plan.serializar()) {
+                JOptionPane.showMessageDialog(this, "Erro interno.");
+                System.exit(1);
+            }
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "Erro interno.");
+            System.exit(1);
+        } catch (FileNotFoundException){
+            
         }
         
     }

@@ -2,7 +2,7 @@ package br.edu.ifrn.schoolplan.classes;
 
 public class Nota {
 
-    private int n1, n2, n3, n4;
+    private double n1, n2, n3, n4;
     private int p1, p2, p3, p4;
     private double notaFinal;
   
@@ -23,7 +23,7 @@ public class Nota {
         return notaFinal;
     }
     public double calcularPonderada(double n1, double n2, double n3, double n4, int p1, int p2, int p3, int p4){
-        notaFinal=(n1*p1 +n2*p2 +n3*p3+ n4*p4)/p1+p2+p3+p4;
+        notaFinal=((n1*p1) +(n2*p2) +(n3*p3)+ (n4*p4))/(p1+p2+p3+p4);
         return notaFinal;
     }
 
@@ -64,19 +64,19 @@ public class Nota {
     }
 
 
-    public int getN1() {
+    public double getN1() {
         return n1;
     }
 
-    public int getN2() {
+    public double getN2() {
         return n2;
     }
 
-    public int getN3() {
+    public double getN3() {
         return n3;
     }
 
-    public int getN4() {
+    public double getN4() {
         return n4;
     }
 

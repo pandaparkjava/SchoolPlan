@@ -9,25 +9,31 @@ import java.awt.Color;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Calendar;
+import java.util.Date;
 /**
  *
  * @author viviane
  */
-public class Trabalhos { 
+public class Trabalho { 
     
     private MyColorChooser nivelImportancia;
     private int diasRestantes;
-    private JDateChooser diaEntrega;
+    private Date diaAtual;
+    private Date diaEntrega;
     private String nomeTrabalho;
     private int dificuldade;
     private int day, month, year;
+    private String descricao;
+    private boolean prova;
    
     
-    public Trabalhos(JDateChooser diaEntrega, String nomeTrabalho, int dificuldade) {
+    public Trabalho(Date diaEntrega, String nomeTrabalho, int dificuldade, String descricao, boolean prova) {
       
         this.diaEntrega= diaEntrega;
         this.nomeTrabalho = nomeTrabalho;
         this.dificuldade= dificuldade;
+        this.descricao = descricao;
+        this.prova = prova;
     }
 
     public int getDificuldade() {
@@ -43,7 +49,7 @@ public class Trabalhos {
         return nivelImportancia;
     }
 
-    public JDateChooser getDiaEntrega() {
+    public Date getDiaEntrega() {
         return diaEntrega;
     }
 
@@ -51,11 +57,8 @@ public class Trabalhos {
         return nomeTrabalho;
     }
 
-    public void setDiasRestantes(JDateChooser diaEntrega) {
-    
-        for(int i=0; i<=diasRestantes;i++){
-         diasRestantes= Period.between(LocalDate.of(JDateChooser), LocalDate.now()).getDays();
-        }
+    public void setDiasRestantes(int diasRestantes) {
+      this.diasRestantes=diasRestantes ;
     }
 
     public void setNivelImportancia(MyColorChooser nivelImportancia) {
@@ -73,9 +76,25 @@ public class Trabalhos {
                 }
             
         }
-    }
-      
-   
-        
-    
 
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public boolean isProva() {
+        return prova;
+    }
+
+    public void setProva(boolean prova) {
+        this.prova = prova;
+    }
+
+    @Override
+    public String toString() {
+        return nomeTrabalho;
+    }
+    }

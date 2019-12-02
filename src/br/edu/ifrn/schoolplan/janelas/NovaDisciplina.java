@@ -217,6 +217,7 @@ public class NovaDisciplina extends javax.swing.JFrame {
     private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
         Disciplina d = new Disciplina(nomeDisciplinatxt.getText(), nomeDocente.getText(), painelCor.getBackground());
         plan.adicionarDisciplina(d);
+        plan.serializar();
         dispose();
     }//GEN-LAST:event_SalvarActionPerformed
 

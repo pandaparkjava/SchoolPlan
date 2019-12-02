@@ -6,7 +6,10 @@
 package br.edu.ifrn.schoolplan.janelas;
 
 import br.edu.ifrn.schoolplan.classes.SchoolPlan;
-import br.edu.ifrn.schoolplan.classes.Trabalhos;
+import br.edu.ifrn.schoolplan.classes.Trabalho;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -14,16 +17,16 @@ import javax.swing.DefaultListModel;
  * @author ferna
  */
 public class TelaTrabalhos extends javax.swing.JFrame {
+
     private SchoolPlan plan;
-    private DefaultListModel<String> model; 
-    /**
-     * Creates new form TelaTrabalhos
-     */
+    private DefaultListModel<String> model;
+    
     public TelaTrabalhos() {
         initComponents();
+        plan = new SchoolPlan();
         model = new DefaultListModel<>();
         listaTrab.setModel(model);
-        listaProvas.setModel(model);
+        
     }
 
     /**
@@ -41,17 +44,30 @@ public class TelaTrabalhos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaTrab = new javax.swing.JList<>();
         detalhar = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
+        titulo = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listaProvas = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
+        tipo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        data = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        descricaoRoll = new javax.swing.JScrollPane();
+        descricao = new javax.swing.JEditorPane();
+        dificuldade = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         trabalho = new javax.swing.JMenu();
         adicionar = new javax.swing.JMenuItem();
         remover = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Lista de trabalhos");
@@ -64,18 +80,33 @@ public class TelaTrabalhos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaTrab);
 
         detalhar.setText("Detalhar...");
-
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Lista de provas");
-
-        listaProvas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        detalhar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detalharActionPerformed(evt);
+            }
         });
-        jScrollPane2.setViewportView(listaProvas);
+
+        jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        titulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        titulo.setText("Título do Trabalho");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Tipo");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Data de entrega");
+
+        data.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("Descrição");
+
+        descricao.setEditable(false);
+        descricaoRoll.setViewportView(descricao);
+
+        dificuldade.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        dificuldade.setText("Dificuldade");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,22 +114,31 @@ public class TelaTrabalhos extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(detalhar)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(detalhar))
+                    .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                    .addComponent(jSeparator2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .addComponent(jSeparator3))
+                        .addComponent(tipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(data, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(descricaoRoll)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(dificuldade))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -108,20 +148,33 @@ public class TelaTrabalhos extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(titulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(data, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(descricaoRoll, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(dificuldade)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
-                    .addComponent(jSeparator2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(detalhar)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(detalhar))
+                    .addComponent(jSeparator4))
                 .addContainerGap())
         );
 
@@ -159,6 +212,7 @@ public class TelaTrabalhos extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void trabalhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabalhoActionPerformed
@@ -170,30 +224,69 @@ public class TelaTrabalhos extends javax.swing.JFrame {
         nt.setVisible(true);
     }//GEN-LAST:event_adicionarActionPerformed
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        carregarLista();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    
+    
+    private void detalharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalharActionPerformed
+        
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+        
+        String dataFormatada = simpleDateFormat.format(plan.getTrabalhos().get(listaTrab.getSelectedIndex()).getDiaEntrega());
+        
+        titulo.setText(plan.getTrabalhos().get(listaTrab.getSelectedIndex()).toString());
+        if(plan.getTrabalhos().get(listaTrab.getSelectedIndex()).isProva() == true){
+            tipo.setText("Prova");
+        } else {
+            tipo.setText("Trabalho");
+        }
+        data.setText(dataFormatada);
+        descricao.setText(plan.getTrabalhos().get(listaTrab.getSelectedIndex()).getDescricao());
+        if(plan.getTrabalhos().get(listaTrab.getSelectedIndex()).getDificuldade() <= 3){
+            dificuldade.setText("Fácil");
+            dificuldade.setForeground(Color.yellow);
+        } else if (plan.getTrabalhos().get(listaTrab.getSelectedIndex()).getDificuldade()<= 6
+                && plan.getTrabalhos().get(listaTrab.getSelectedIndex()).getDificuldade()> 3){
+            dificuldade.setText("Médio");
+            dificuldade.setForeground(Color.orange);
+        } else if (plan.getTrabalhos().get(listaTrab.getSelectedIndex()).getDificuldade() > 6){
+            dificuldade.setText("Difícil");
+            dificuldade.setForeground(Color.red);
+        }
+    }//GEN-LAST:event_detalharActionPerformed
+
         public void carregarLista(){
         model.clear();
-        for(Trabalhos d : plan.getTrabalhos()){
+        for(Trabalho d : plan.getTrabalhos()){
             model.addElement(d.toString());
         
         }
     }
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem adicionar;
+    private javax.swing.JLabel data;
+    private javax.swing.JEditorPane descricao;
+    private javax.swing.JScrollPane descricaoRoll;
     private javax.swing.JButton detalhar;
+    private javax.swing.JLabel dificuldade;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JList<String> listaProvas;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JList<String> listaTrab;
     private javax.swing.JMenuItem remover;
+    private javax.swing.JLabel tipo;
+    private javax.swing.JLabel titulo;
     private javax.swing.JMenu trabalho;
     // End of variables declaration//GEN-END:variables
 }
